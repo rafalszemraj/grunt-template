@@ -50,7 +50,7 @@ module.exports = function(grunt) {
                             target: 'ES6',
                             sourceMap: '<%= browserify.options.browserifyOptions.debug %>',
                             jsx: 'react',
-                            outDir: '<%= pkg..sources.typescript %>'
+                            outDir: '<%= pkg.sources.typescript %>'
                         }
                     }
                 }

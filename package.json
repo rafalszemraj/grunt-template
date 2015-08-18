@@ -16,6 +16,7 @@
     "time-grunt": "^1.2.1"
   },
   "dependencies": {
+    "immutable": "^3.7.4",
     "react": "^0.13.3"
   },
   "sources": {
