@@ -1,68 +1,114 @@
 var data = require('./data.json');
-var R = require('ramda');
+import R from 'ramda'
 
-var rowMapper = row => {
+    // type:: rowObject -> {H,N,F}
+var type = R.compose( R.head, R.prop('name')),
+    // level: rowObject -> Number
+    level = R.compose(Number, R.prop(1), R.prop('name')),
+    // isGroup :: rowObject -> Boolean
+    isData = R.useWith( R.equals('N'), type ),
+    isGroup = R.useWith( R.equals('H'), type ),
+    isSummary = R.useWith( R.equals('F'), type ),
+    // getColumnNames:: [column] => [columnName]
+    getColumnNames = R.map( R.prop('internalName')),
+    cftRowToObject = R.curry( (columns, row) => {
 
-    return {
-        name: R.prop(0, row),
-        data: row,
-        add: function(element) {
-            this.children = R.append( element, this.children || [] )
+      return {
+        name: R.head(row),
+        data: R.zipObj( getColumnNames(columns), R.tail(row))
+      }
+  }
+);
+
+
+var  toHierarchy = R.curry((columns, cftRows) => {
+
+  var   currentGroup = { name:'ROOT'},
+        groupOrder = [currentGroup],
+        parsers = {
+          'N': R.useWith( R.T, R.identity, R.identity),
+          'H': R.useWith( R.gt, level, level ),
+          'F': R.useWith( R.equals, level, level )
+        },
+        getParser = row => parsers[type(row)](row),
+        getGroup = lookupFn => R.findLast( lookupFn, groupOrder ) || R.head(groupOrder),
+        addChild = R.curry((child, group) => group.children = R.append( child, group.children || [] )),
+        reducer = (group,row) => {
+
+          R.compose( addChild(row), getGroup, getParser )(row);
+          isGroup(row) && groupOrder.push(row);
+          return group;
+
         }
+
+    return R.prop('children', R.reduce( reducer, currentGroup, R.map( cftRowToObject( columns ), cftRows ) ));
+});
+
+/**
+ * dataRowMapper:: {name, data:{}} => {}
+ */
+var  toGrid = R.curry(( groups, dataRowMapper, hierarchy ) => {
+
+  var makeHeader = groupRow => {
+
+    var key = groups[level(groupRow)].column;
+    return {
+      key,
+      label: groupRow.data[key],
+      children: R.map(mapper, groupRow.children)
     }
 
+  };
+  var mapper = R.ifElse( isGroup, makeHeader, R.ifElse( isData, dataRowMapper, R.identity) );
+  return R.map( mapper, hierarchy );
+
+
+
+})
+
+var cftRowsToGridConverter = R.curry( (columns, groups, dataRowMapper ) => R.compose( toGrid(groups, dataRowMapper), toHierarchy(columns)));
+
+
+export {cftRowsToGridConverter, toGrid, toHierarchy}
+
+
+class Balance {
+
+  static fromDataRow(cftDataRow) {
+
+    return new Balance(cftDataRow)
+  }
+
+  constructor(cftDataRow) {
+
+    this.data = R.prop('data', cftDataRow);
+  }
+
+  get isCashDivident() {
+
+    return R.propEq('Cash Divident', 'event', data );
+  }
+
 }
 
+// test
+var data = require('./mocks/allevents/scarletletter/reportData.json');
 
 
-function parse(flatRows) {
+// create builder based on columns set
+var baseBuilder = cftRowsToGridConverter( data.columns );
+var builderWithGroups = baseBuilder( data.transforms.groups );
 
-    var currentGroup = rowMapper(['ROOT']),
-        type = R.compose(R.prop(0), R.prop('name')),
-        level = R.compose(Number, R.prop(1), R.prop('name')),
-        findParent = R.useWith( R.gt, level, level ),
-        findSame = R.useWith( R.equals, level, level ),
-        findLast = (row) => true,
-        groupOrder = [currentGroup],
-        addToGroupOrder = row => groupOrder.push(row),
-        addToGroup = R.curry((row, group) => group.add(row))
-        getGroup = R.curry((lookupFn, row) => R.findLast( lookupFn(row), groupOrder ) || R.head(groupOrder));
-        reducer = (group, row ) => {
+// grid builder for plain values
+var plainGridBuilder = builderWithGroups( R.prop('data') );
 
-            switch( type(row) ) {
-
-                //case 'N': R.last(groupOrder).add(row); break;
-                    case 'N': R.compose( addToGroup(row), getGroup(findLast))(row); break;
-                case 'H':
-                {
-                    R.compose( addToGroup(row), getGroup(findParent) )(row);
-                    groupOrder.push(row);
-                    break;
-                }
-                case 'F': {
-                    R.compose( addToGroup(row), getGroup(findSame) )(row);
-                    //getGroup(findSame, row).add(row);
-                    break;
-                }
-                default:;
-
-            }
-            return group;
+// grid builder for Balances
+var balanceGridBuilder = builderWithGroups( Balance.fromDataRow );
 
 
+var plain = plainGridBuilder(data.rows);
+var balances = balanceGridBuilder(data.rows);
 
-        }
-
-     return R.reduce( reducer, currentGroup, flatRows );
-}
-
+console.log('done');
 
 
-
-
-var rows = R.map( rowMapper, data.rows );
-var h = parse( rows );
-
-var p = R.project(['name', 'children'], h.children );
-
-console.log(h);
