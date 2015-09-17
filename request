@@ -1,0 +1,38 @@
+import {serviceLogger} from '../../logger'
+import R from 'ramda';
+
+
+var mapToParams = (query, data) => data ? R.reduceObj( (params, key, value) => params+'?'+key+'='+value, query, data ) : query;
+var mapWithURI = (query, uri) => uri ? query + uri : query;
+
+var getRequest = R.curry( (dataType, query) => {
+
+  return (URIparam, URLParams = null) => {
+
+    return new Promise(function (resolve, reject) {
+
+      return $.get(mapWithURI(query, URIparam), URLParams, null, dataType)
+        .done(result => {
+          serviceLogger.isInfoEnabled() && serviceLogger.info('Got success response for request: %s', mapToParams(mapWithURI(query, URIparam),URLParams) );
+          serviceLogger.isDebugEnabled() && serviceLogger.debug('Received data %j', result);
+          resolve(result)
+        }
+      )
+        .fail((error, status) => {
+          serviceLogger.error("Error: %j, Status: %s", error, status);
+          reject(error)
+        }
+      );
+    })
+  }
+
+});
+
+
+var getJSON = getRequest('json')
+
+export default {
+
+  getJSON: getRequest('json')
+
+}
