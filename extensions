@@ -1,0 +1,5 @@
+export default function(R) {
+
+  R.reduceObj = (reducer, acc, obj) => R.reduce( (acc, pair) => reducer( acc, R.head(pair), R.tail(pair) ), acc, R.toPairs(obj) );
+
+}
