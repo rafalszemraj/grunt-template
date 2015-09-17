@@ -1,0 +1,19 @@
+import Alt from '../alt';
+import R from 'ramda'
+import Entitlements from "../const/Entitlements";
+import {getUserEntitlements} from '../services/base/api'
+
+const autoDispatcher = (altAction, transform = R.identity) => R.compose( altAction.dispatch.bind(altAction), transform);
+
+class EntitlementsActions {
+
+  checkIfUserHasEntitlements(user) {
+
+    var entitlements = { entitlements:[Entitlements.ENTITLEMENT_AUTHORISE, Entitlements.ENTITLEMENT_VIEW].join(',')};
+    getUserEntitlements(user, entitlements ).then( autoDispatcher(this, R.prop('users')) )
+
+  }
+
+}
+
+module.exports = Alt.createActions(EntitlementsActions);
