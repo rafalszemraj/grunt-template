@@ -1,0 +1,869 @@
+{
+  "request": {
+    "user": {
+      "gpaUserId": "szemrara"
+    },
+    "client": {
+      "code": "GRPJABCA"
+    },
+    "server": "xldn5199vdap.ldn.swissbank.com",
+    "allowedRoleFnIds": [
+      31501,
+      31502,
+      31503,
+      31504,
+      31505,
+      31506,
+      31507,
+      31600,
+      31601,
+      31602
+    ],
+    "userLocalDate": "2015-09-15",
+    "report": {
+      "category": "corporate_actions",
+      "name": "all events",
+      "selectedOptions": [
+        {
+          "parameter": "product",
+          "option": "pbswap"
+        },
+        {
+          "parameter": "type",
+          "option": "allevents"
+        },
+        {
+          "parameter": "date",
+          "option": "latest"
+        }
+      ],
+      "transforms": {
+        "groups": [
+          {
+            "column": "accountname",
+            "totals": [],
+            "alternativeSorting": null
+          },
+          {
+            "column": "accountid",
+            "totals": [],
+            "alternativeSorting": null
+          },
+          {
+            "column": "eventid",
+            "totals": [
+              {
+                "column": "position",
+                "aggregate": "SUM"
+              }
+            ],
+            "alternativeSorting": null
+          }
+        ]
+      }
+    },
+    "accounts": [
+      {
+        "accountId": "GRPJABCA",
+        "accountType": "G"
+      }
+    ]
+  },
+  "error": null,
+  "server": "xldn5199vdap.ldn.swissbank.com",
+  "summary": {
+    "rowCount": 26,
+    "columnSummaries": [
+      {
+        "column": "ccy",
+        "tooManyValues": false,
+        "valueOccurrences": [
+          {
+            "value": "",
+            "occurrences": 2
+          },
+          {
+            "value": "AUD",
+            "occurrences": 2
+          },
+          {
+            "value": "EUR",
+            "occurrences": 1
+          },
+          {
+            "value": "GBP",
+            "occurrences": 3
+          },
+          {
+            "value": "JPY",
+            "occurrences": 12
+          },
+          {
+            "value": "TWD",
+            "occurrences": 3
+          },
+          {
+            "value": "USD",
+            "occurrences": 3
+          }
+        ]
+      },
+      {
+        "column": "eventid",
+        "tooManyValues": false,
+        "valueOccurrences": [
+          {
+            "value": "2758673",
+            "occurrences": 1
+          },
+          {
+            "value": "2760658",
+            "occurrences": 2
+          },
+          {
+            "value": "2775609",
+            "occurrences": 2
+          },
+          {
+            "value": "2776657",
+            "occurrences": 3
+          },
+          {
+            "value": "2777508",
+            "occurrences": 2
+          },
+          {
+            "value": "2778423",
+            "occurrences": 1
+          },
+          {
+            "value": "2779659",
+            "occurrences": 1
+          },
+          {
+            "value": "2780898",
+            "occurrences": 2
+          },
+          {
+            "value": "2795267",
+            "occurrences": 1
+          },
+          {
+            "value": "2811590",
+            "occurrences": 1
+          },
+          {
+            "value": "2819039",
+            "occurrences": 2
+          },
+          {
+            "value": "2829955",
+            "occurrences": 1
+          },
+          {
+            "value": "2842158",
+            "occurrences": 1
+          },
+          {
+            "value": "2861146",
+            "occurrences": 1
+          },
+          {
+            "value": "2872251",
+            "occurrences": 1
+          },
+          {
+            "value": "2872274",
+            "occurrences": 2
+          },
+          {
+            "value": "2872808",
+            "occurrences": 2
+          }
+        ]
+      },
+      {
+        "column": "event",
+        "tooManyValues": false,
+        "valueOccurrences": [
+          {
+            "value": "Cash Dividend",
+            "occurrences": 15
+          },
+          {
+            "value": "Dividend Reinvestment",
+            "occurrences": 1
+          },
+          {
+            "value": "Interest Payment",
+            "occurrences": 7
+          },
+          {
+            "value": "Return of Capital",
+            "occurrences": 1
+          },
+          {
+            "value": "Suspension of Conversion Right",
+            "occurrences": 1
+          },
+          {
+            "value": "Tender Offer - Offer to Buy",
+            "occurrences": 1
+          }
+        ]
+      },
+      {
+        "column": "ric",
+        "tooManyValues": false,
+        "valueOccurrences": [
+          {
+            "value": "MATURITY",
+            "occurrences": 1
+          },
+          {
+            "value": "QUARTERL",
+            "occurrences": 4
+          },
+          {
+            "value": "SEMI-ANN",
+            "occurrences": 3
+          }
+        ]
+      },
+      {
+        "column": "isin",
+        "tooManyValues": false,
+        "valueOccurrences": [
+          {
+            "value": "DE000A161KH4",
+            "occurrences": 1
+          },
+          {
+            "value": "GB0004544929",
+            "occurrences": 1
+          },
+          {
+            "value": "IE00B1CMPN86",
+            "occurrences": 1
+          },
+          {
+            "value": "JP3040880001",
+            "occurrences": 1
+          },
+          {
+            "value": "JP3047510007",
+            "occurrences": 2
+          },
+          {
+            "value": "JP3152740001",
+            "occurrences": 3
+          },
+          {
+            "value": "JP3399300007",
+            "occurrences": 2
+          },
+          {
+            "value": "JP3456000003",
+            "occurrences": 2
+          },
+          {
+            "value": "JP3800390001",
+            "occurrences": 2
+          },
+          {
+            "value": "KYG989221000",
+            "occurrences": 2
+          },
+          {
+            "value": "TW0001102002",
+            "occurrences": 1
+          },
+          {
+            "value": "US9024941034",
+            "occurrences": 1
+          },
+          {
+            "value": "USF22797RT78",
+            "occurrences": 2
+          },
+          {
+            "value": "XS0932235194",
+            "occurrences": 2
+          },
+          {
+            "value": "XS1189295519",
+            "occurrences": 1
+          },
+          {
+            "value": "XS1244538523",
+            "occurrences": 2
+          }
+        ]
+      },
+      {
+        "column": "ticker",
+        "tooManyValues": false,
+        "valueOccurrences": [
+          {
+            "value": "1102",
+            "occurrences": 1
+          },
+          {
+            "value": "2292",
+            "occurrences": 2
+          },
+          {
+            "value": "2670",
+            "occurrences": 3
+          },
+          {
+            "value": "3048",
+            "occurrences": 2
+          },
+          {
+            "value": "3281",
+            "occurrences": 2
+          },
+          {
+            "value": "4958",
+            "occurrences": 2
+          },
+          {
+            "value": "8233",
+            "occurrences": 2
+          },
+          {
+            "value": "8954",
+            "occurrences": 1
+          },
+          {
+            "value": "AERL1",
+            "occurrences": 1
+          },
+          {
+            "value": "IMT",
+            "occurrences": 1
+          },
+          {
+            "value": "TSN",
+            "occurrences": 1
+          }
+        ]
+      },
+      {
+        "column": "sedol",
+        "tooManyValues": false,
+        "valueOccurrences": [
+          {
+            "value": "0454492",
+            "occurrences": 1
+          },
+          {
+            "value": "2909730",
+            "occurrences": 1
+          },
+          {
+            "value": "6056331",
+            "occurrences": 1
+          },
+          {
+            "value": "6292102",
+            "occurrences": 3
+          },
+          {
+            "value": "6527774",
+            "occurrences": 1
+          },
+          {
+            "value": "6838584",
+            "occurrences": 2
+          },
+          {
+            "value": "6870401",
+            "occurrences": 2
+          },
+          {
+            "value": "B194YN0",
+            "occurrences": 2
+          },
+          {
+            "value": "B1CMPN8",
+            "occurrences": 1
+          },
+          {
+            "value": "B3B9ML1",
+            "occurrences": 2
+          },
+          {
+            "value": "B734XQ4",
+            "occurrences": 2
+          },
+          {
+            "value": "B8RBZV7",
+            "occurrences": 2
+          },
+          {
+            "value": "BJ4FZK8",
+            "occurrences": 2
+          },
+          {
+            "value": "BVYQ9H0",
+            "occurrences": 1
+          },
+          {
+            "value": "BYPZLF9",
+            "occurrences": 1
+          },
+          {
+            "value": "BYZG5X8",
+            "occurrences": 2
+          }
+        ]
+      },
+      {
+        "column": "securitydesc",
+        "tooManyValues": false,
+        "valueOccurrences": [
+          {
+            "value": "ABC-MART INC",
+            "occurrences": 3
+          },
+          {
+            "value": "AER LINGUS GROUP PLC..",
+            "occurrences": 1
+          },
+          {
+            "value": "ASIA CEMENT CORP",
+            "occurrences": 1
+          },
+          {
+            "value": "BIC CAMERA INC",
+            "occurrences": 2
+          },
+          {
+            "value": "CREDIT AGRICOLE SA ACAFP  7.87500%......",
+            "occurrences": 2
+          },
+          {
+            "value": "GLP J-REIT",
+            "occurrences": 2
+          },
+          {
+            "value": "IMPERIAL TOBACCO GROUP PLC",
+            "occurrences": 1
+          },
+          {
+            "value": "JAPAN AIRPORT TERMINAL CO LTD JAPAIR 20200306 0%",
+            "occurrences": 1
+          },
+          {
+            "value": "MORGAN STANLEY MS 20181116 4.7500%",
+            "occurrences": 2
+          },
+          {
+            "value": "ORIX JREIT INC",
+            "occurrences": 1
+          },
+          {
+            "value": "ROCKET INTERNET SE RKETGR 20220722 3.000000%",
+            "occurrences": 1
+          },
+          {
+            "value": "S FOODS INC",
+            "occurrences": 2
+          },
+          {
+            "value": "SANTANDER UK PLC ABBEY  7.375%",
+            "occurrences": 2
+          },
+          {
+            "value": "TAKASHIMAYA CO - LTD",
+            "occurrences": 2
+          },
+          {
+            "value": "TYSON FOODS INC-CL A",
+            "occurrences": 1
+          },
+          {
+            "value": "ZHEN DING TECHNOLOGY HOLDING",
+            "occurrences": 2
+          }
+        ]
+      },
+      {
+        "column": "exdate",
+        "tooManyValues": false,
+        "valueOccurrences": [
+          {
+            "value": "1-Jul-15",
+            "occurrences": 1
+          },
+          {
+            "value": "1-Sep-15",
+            "occurrences": 1
+          },
+          {
+            "value": "16-Nov-15",
+            "occurrences": 2
+          },
+          {
+            "value": "22-Jan-16",
+            "occurrences": 1
+          },
+          {
+            "value": "23-Sep-15",
+            "occurrences": 2
+          },
+          {
+            "value": "24-Sep-15",
+            "occurrences": 2
+          },
+          {
+            "value": "27-Aug-15",
+            "occurrences": 13
+          },
+          {
+            "value": "28-Aug-15",
+            "occurrences": 1
+          },
+          {
+            "value": "31-Aug-15",
+            "occurrences": 2
+          }
+        ]
+      },
+      {
+        "column": "recorddate",
+        "tooManyValues": false,
+        "valueOccurrences": [
+          {
+            "value": "1-Sep-15",
+            "occurrences": 3
+          },
+          {
+            "value": "16-Nov-15",
+            "occurrences": 2
+          },
+          {
+            "value": "2-Sep-15",
+            "occurrences": 1
+          },
+          {
+            "value": "22-Sep-15",
+            "occurrences": 2
+          },
+          {
+            "value": "23-Sep-15",
+            "occurrences": 2
+          },
+          {
+            "value": "28-Aug-15",
+            "occurrences": 1
+          },
+          {
+            "value": "31-Aug-15",
+            "occurrences": 12
+          }
+        ]
+      },
+      {
+        "column": "paydate",
+        "tooManyValues": false,
+        "valueOccurrences": [
+          {
+            "value": "10-Nov-15",
+            "occurrences": 3
+          },
+          {
+            "value": "15-Sep-15",
+            "occurrences": 3
+          },
+          {
+            "value": "16-Nov-15",
+            "occurrences": 2
+          },
+          {
+            "value": "19-Nov-15",
+            "occurrences": 2
+          },
+          {
+            "value": "2-Nov-15",
+            "occurrences": 2
+          },
+          {
+            "value": "20-Nov-15",
+            "occurrences": 2
+          },
+          {
+            "value": "22-Jan-16",
+            "occurrences": 1
+          },
+          {
+            "value": "23-Sep-15",
+            "occurrences": 2
+          },
+          {
+            "value": "24-Sep-15",
+            "occurrences": 2
+          },
+          {
+            "value": "25-Sep-15",
+            "occurrences": 1
+          },
+          {
+            "value": "27-Nov-15",
+            "occurrences": 2
+          },
+          {
+            "value": "30-Sep-15",
+            "occurrences": 1
+          },
+          {
+            "value": "6-Nov-15",
+            "occurrences": 1
+          }
+        ]
+      },
+      {
+        "column": "accountid",
+        "tooManyValues": false,
+        "valueOccurrences": [
+          {
+            "value": "3734009",
+            "occurrences": 3
+          },
+          {
+            "value": "8726350",
+            "occurrences": 1
+          },
+          {
+            "value": "8972956",
+            "occurrences": 16
+          },
+          {
+            "value": "9009472",
+            "occurrences": 3
+          },
+          {
+            "value": "9009501",
+            "occurrences": 3
+          }
+        ]
+      },
+      {
+        "column": "refaccount",
+        "tooManyValues": false,
+        "valueOccurrences": [
+          {
+            "value": "8726350",
+            "occurrences": 1
+          },
+          {
+            "value": "8972956",
+            "occurrences": 16
+          },
+          {
+            "value": "P0937885",
+            "occurrences": 3
+          },
+          {
+            "value": "P4737272",
+            "occurrences": 3
+          },
+          {
+            "value": "P4737311",
+            "occurrences": 3
+          }
+        ]
+      },
+      {
+        "column": "accountname",
+        "tooManyValues": false,
+        "valueOccurrences": [
+          {
+            "value": "JAB LUX - Convertible Bonds",
+            "occurrences": 3
+          },
+          {
+            "value": "JABCAP GBL CONVERTABLE MSTR FD",
+            "occurrences": 3
+          },
+          {
+            "value": "JABCAP Global Convertible",
+            "occurrences": 1
+          },
+          {
+            "value": "JABCAP MULTI STRATEGY",
+            "occurrences": 3
+          },
+          {
+            "value": "JABCAP Multi Strat Ltd",
+            "occurrences": 16
+          }
+        ]
+      },
+      {
+        "column": "position",
+        "tooManyValues": true,
+        "valueOccurrences": []
+      },
+      {
+        "column": "positiontype",
+        "tooManyValues": false,
+        "valueOccurrences": [
+          {
+            "value": "LOAN",
+            "occurrences": 4
+          },
+          {
+            "value": "SWAPS",
+            "occurrences": 9
+          },
+          {
+            "value": "TRADED",
+            "occurrences": 13
+          }
+        ]
+      },
+      {
+        "column": "deadlinedate",
+        "tooManyValues": false,
+        "valueOccurrences": [
+          {
+            "value": "28-Aug-15 08:00",
+            "occurrences": 1
+          }
+        ]
+      },
+      {
+        "column": "election",
+        "tooManyValues": false,
+        "valueOccurrences": []
+      },
+      {
+        "column": "timezone",
+        "tooManyValues": false,
+        "valueOccurrences": [
+          {
+            "value": "",
+            "occurrences": 17
+          },
+          {
+            "value": "Europe/London",
+            "occurrences": 1
+          }
+        ]
+      },
+      {
+        "column": "product",
+        "tooManyValues": false,
+        "valueOccurrences": [
+          {
+            "value": "PB",
+            "occurrences": 17
+          },
+          {
+            "value": "Swap",
+            "occurrences": 9
+          }
+        ]
+      },
+      {
+        "column": "corporateactiontype",
+        "tooManyValues": false,
+        "valueOccurrences": [
+          {
+            "value": "Income",
+            "occurrences": 23
+          },
+          {
+            "value": "Voluntary",
+            "occurrences": 3
+          }
+        ]
+      },
+      {
+        "column": "context",
+        "tooManyValues": false,
+        "valueOccurrences": [
+          {
+            "value": "H",
+            "occurrences": 26
+          }
+        ]
+      },
+      {
+        "column": "cusip",
+        "tooManyValues": false,
+        "valueOccurrences": [
+          {
+            "value": "902494103",
+            "occurrences": 1
+          },
+          {
+            "value": "F22797RT7",
+            "occurrences": 2
+          },
+          {
+            "value": "G0125Z105",
+            "occurrences": 1
+          },
+          {
+            "value": "G4721W102",
+            "occurrences": 1
+          },
+          {
+            "value": "G8108WAA4",
+            "occurrences": 2
+          },
+          {
+            "value": "J00056101",
+            "occurrences": 3
+          },
+          {
+            "value": "J04516100",
+            "occurrences": 2
+          },
+          {
+            "value": "J2620NAD7",
+            "occurrences": 1
+          },
+          {
+            "value": "J76616101",
+            "occurrences": 2
+          },
+          {
+            "value": "J81195125",
+            "occurrences": 2
+          },
+          {
+            "value": "J8996L102",
+            "occurrences": 1
+          },
+          {
+            "value": "U61778K28",
+            "occurrences": 2
+          },
+          {
+            "value": "Y0275F107",
+            "occurrences": 1
+          }
+        ]
+      },
+      {
+        "column": "deadlinedaterange",
+        "tooManyValues": false,
+        "valueOccurrences": [
+          {
+            "value": "None",
+            "occurrences": 25
+          },
+          {
+            "value": "Past",
+            "occurrences": 1
+          }
+        ]
+      }
+    ]
+  }
+}
