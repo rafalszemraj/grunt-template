@@ -1,0 +1,369 @@
+{
+  "request": {
+    "user": {
+      "gpaUserId": "szemrara"
+    },
+    "client": {
+      "code": "GRPJABCA"
+    },
+    "allowedRoleFnIds": [
+      31501,
+      31502,
+      31503,
+      31504,
+      31505,
+      31506,
+      31507,
+      31600,
+      31601,
+      31602
+    ],
+    "userLocalDate": "2015-09-14",
+    "reportInstance": {
+      "id": 44
+    }
+  },
+  "server": "xldn5211vdap.ldn.swissbank.com",
+  "reportInstanceHeader": {
+    "category": "corporate_actions",
+    "name": "all events",
+    "disclaimer": "",
+    "visualFilters": [
+      {
+        "name": "Corporate Action Type",
+        "column": "corporateactiontype",
+        "showColumns": 2,
+        "showRows": 5,
+        "showAll": true,
+        "showOther": true,
+        "showPieChart": true,
+        "values": []
+      },
+      {
+        "name": "Event Type",
+        "column": "event",
+        "showColumns": 2,
+        "showRows": 5,
+        "showAll": true,
+        "showOther": true,
+        "showPieChart": true,
+        "values": []
+      },
+      {
+        "name": "Deadline Date Range",
+        "column": "deadlinedaterange",
+        "showColumns": 2,
+        "showRows": 5,
+        "showAll": true,
+        "showOther": true,
+        "showPieChart": true,
+        "values": []
+      },
+      {
+        "name": "Product",
+        "column": "product",
+        "showColumns": 2,
+        "showRows": 5,
+        "showAll": true,
+        "showOther": true,
+        "showPieChart": true,
+        "values": []
+      }
+    ],
+    "transforms": {
+      "sorts": [
+        {
+          "column": "accountname",
+          "direction": "ASC"
+        },
+        {
+          "column": "eventid",
+          "direction": "ASC"
+        },
+        {
+          "column": "deadlinedate",
+          "direction": "ASC"
+        },
+        {
+          "column": "securitydesc",
+          "direction": "ASC"
+        }
+      ],
+      "groups": [
+        {
+          "column": "accountname",
+          "totals": [],
+          "alternativeSorting": null
+        }
+      ]
+    },
+    "columnSet": {
+      "name": "allevents",
+      "availableColumns": [
+        {
+          "column": "accountid",
+          "displayName": "Account GLI",
+          "type": "STRING",
+          "defaultWidthEms": 6.45,
+          "hideFromUser": false
+        },
+        {
+          "column": "accountname",
+          "displayName": "Account Name",
+          "type": "STRING",
+          "defaultWidthEms": 8.89,
+          "hideFromUser": false
+        },
+        {
+          "column": "ccy",
+          "displayName": "CCY",
+          "type": "STRING",
+          "defaultWidthEms": 4.34,
+          "hideFromUser": false
+        },
+        {
+          "column": "context",
+          "displayName": "Event Context",
+          "type": "STRING",
+          "defaultWidthEms": 12,
+          "hideFromUser": true
+        },
+        {
+          "column": "corporateactiontype",
+          "displayName": "Corporate Action Type",
+          "type": "STRING",
+          "defaultWidthEms": 12,
+          "hideFromUser": false
+        },
+        {
+          "column": "cusip",
+          "displayName": "CUSIP",
+          "type": "STRING",
+          "defaultWidthEms": 12,
+          "hideFromUser": false
+        },
+        {
+          "column": "deadlinedate",
+          "displayName": "Deadline Date",
+          "type": "DATE_TIME",
+          "defaultFormat": "d-MMM-yy HH:mm",
+          "defaultWidthEms": 10.12,
+          "hideFromUser": false
+        },
+        {
+          "column": "deadlinedaterange",
+          "displayName": "Deadline Date Range",
+          "type": "STRING",
+          "defaultWidthEms": 12,
+          "hideFromUser": false
+        },
+        {
+          "column": "election",
+          "displayName": "Election",
+          "type": "STRING",
+          "defaultWidthEms": 8,
+          "hideFromUser": false
+        },
+        {
+          "column": "event",
+          "displayName": "Event",
+          "type": "STRING",
+          "defaultWidthEms": 12,
+          "hideFromUser": false
+        },
+        {
+          "column": "eventid",
+          "displayName": "Event ID",
+          "type": "STRING",
+          "defaultWidthEms": 7,
+          "hideFromUser": false
+        },
+        {
+          "column": "exdate",
+          "displayName": "Ex Date",
+          "type": "DATE_TIME",
+          "defaultFormat": "SHORT",
+          "defaultWidthEms": 6.12,
+          "hideFromUser": false
+        },
+        {
+          "column": "isin",
+          "displayName": "ISIN",
+          "type": "STRING",
+          "defaultWidthEms": 12,
+          "hideFromUser": false
+        },
+        {
+          "column": "paydate",
+          "displayName": "Pay Date",
+          "type": "DATE_TIME",
+          "defaultFormat": "SHORT",
+          "defaultWidthEms": 6.12,
+          "hideFromUser": false
+        },
+        {
+          "column": "position",
+          "displayName": "Position",
+          "type": "NUMBER",
+          "defaultFormat": "#,##0;(#,##0)",
+          "defaultWidthEms": 8.23,
+          "defaultAggregateOperator": "SUM",
+          "hideFromUser": false
+        },
+        {
+          "column": "positiontype",
+          "displayName": "Position Type",
+          "type": "STRING",
+          "defaultWidthEms": 6.45,
+          "hideFromUser": false
+        },
+        {
+          "column": "product",
+          "displayName": "Product",
+          "type": "STRING",
+          "defaultWidthEms": 12,
+          "hideFromUser": false
+        },
+        {
+          "column": "recorddate",
+          "displayName": "Record Date",
+          "type": "DATE_TIME",
+          "defaultFormat": "SHORT",
+          "defaultWidthEms": 6.12,
+          "hideFromUser": false
+        },
+        {
+          "column": "refaccount",
+          "displayName": "Account ID",
+          "type": "STRING",
+          "defaultWidthEms": 8,
+          "hideFromUser": false
+        },
+        {
+          "column": "ric",
+          "displayName": "RIC",
+          "type": "STRING",
+          "defaultWidthEms": 12,
+          "hideFromUser": false
+        },
+        {
+          "column": "securitydesc",
+          "displayName": "Security Desc",
+          "type": "STRING",
+          "defaultWidthEms": 23.34,
+          "hideFromUser": false
+        },
+        {
+          "column": "sedol",
+          "displayName": "SEDOL",
+          "type": "STRING",
+          "defaultWidthEms": 8,
+          "hideFromUser": false
+        },
+        {
+          "column": "ticker",
+          "displayName": "Ticker",
+          "type": "STRING",
+          "defaultWidthEms": 12,
+          "hideFromUser": false
+        },
+        {
+          "column": "timezone",
+          "displayName": "Time Zone",
+          "type": "STRING",
+          "defaultWidthEms": 12,
+          "hideFromUser": false
+        }
+      ]
+    },
+    "columnList": {
+      "id": 110,
+      "visibleColumns": [
+        {
+          "column": "accountname",
+          "widthEms": 8.89
+        },
+        {
+          "column": "accountid",
+          "widthEms": 6.45
+        },
+        {
+          "column": "eventid",
+          "widthEms": 7
+        },
+        {
+          "column": "event",
+          "widthEms": 12
+        },
+        {
+          "column": "sedol",
+          "widthEms": 8
+        },
+        {
+          "column": "securitydesc",
+          "widthEms": 23.34
+        },
+        {
+          "column": "deadlinedate",
+          "format": "d-MMM-yy HH:mm",
+          "widthEms": 10.12
+        },
+        {
+          "column": "timezone",
+          "widthEms": 12
+        },
+        {
+          "column": "exdate",
+          "format": "SHORT",
+          "widthEms": 6.12
+        },
+        {
+          "column": "recorddate",
+          "format": "SHORT",
+          "widthEms": 6.12
+        },
+        {
+          "column": "paydate",
+          "format": "SHORT",
+          "widthEms": 6.12
+        },
+        {
+          "column": "position",
+          "format": "#,##0;(#,##0)",
+          "widthEms": 8.23
+        },
+        {
+          "column": "positiontype",
+          "widthEms": 6.45
+        },
+        {
+          "column": "election",
+          "widthEms": 8
+        }
+      ]
+    },
+    "reportType": {
+      "reportTypeName": "normal",
+      "showHiddenHeaderColumns": false,
+      "canChangeSorting": true,
+      "canChangeGrouping": true
+    },
+    "reportInstanceId": 44,
+    "displayName": "All Events",
+    "ownerType": "SYSTEM",
+    "selectedOptions": [
+      {
+        "parameter": "date",
+        "option": "latest"
+      },
+      {
+        "parameter": "product",
+        "option": "pbswap"
+      },
+      {
+        "parameter": "type",
+        "option": "allevents"
+      }
+    ]
+  }
+}
