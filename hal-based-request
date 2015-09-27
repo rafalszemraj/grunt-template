@@ -1,0 +1,22 @@
+import hal from 'halogen';
+import Promise from 'bluebird';
+
+const prime_api = 'prime/';
+
+let apiSupport = url => prime_api + url;
+
+// url -> halInstance
+let reportService = resource => hal("report/"+ resource).urlHandler( apiSupport );
+
+let getReportInfo = resource => {
+
+    return new Promise( function( resolve, reject ) {
+
+
+        reportService(resource).request().then( resolve );
+
+    })
+
+}
+
+export {getReportInfo}
