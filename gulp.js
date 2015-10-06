@@ -18,11 +18,13 @@ var gulp = require('gulp'),
   _ = require('lodash'),
   maybe = require('maybe-js'),
   mocha = require('gulp-mocha'),
+  glob =require('glob'),
 
   env = process.env,
   host = 'https://' + (env.COMPUTERNAME + '.' + process.env.USERDNSDOMAIN).toLowerCase(),
   ssl = env.HOME + '/.neo/ssl/',
   pkg = require('./package.json'),
+  path = require('path'),
   production = env.NODE_ENV === "production",
 
 
@@ -74,9 +76,13 @@ gulp.task('clean', function() {
 });
 
 
-var build = function(watch) {
+var build = function( entryPoint, watch, output) {
   var bundler,
     rebundle;
+
+
+  var outputDir = output ? path.dirname(output) : 'dist';
+  var outputFile = output ? path.basename(output) : pkg.name + '.js'
 
   if(!watch) {
     gutil.log("Production build", production ? colors.green.bold("YES") : colors.red.bold("NO"))
@@ -85,7 +91,7 @@ var build = function(watch) {
     logElement("neo", pkg.neo, colors.yellow, colors.bgYellow);
   }
 
-  bundler = browserify(bundleOpts)
+  bundler = browserify(_.assign(bundleOpts, { entries:entryPoint }))
         .plugin(
           ['neo-browserify-exports', pkg.neo],
           ['neo-browserify-mold-sourcemap']
@@ -98,8 +104,8 @@ var build = function(watch) {
     var stream = bundler.bundle();
     stream.on('error', handleError('Browserify'));
     stream = stream
-      .pipe(source(pkg.name+'.js'))
-      .pipe(gulp.dest('dist'))
+      .pipe(source(outputFile))
+      .pipe(gulp.dest(outputDir));
     watch && stream.pipe(livereload());
     return stream;
   };
@@ -114,26 +120,30 @@ var build = function(watch) {
 var bundleLess = function() {
 
   gutil.log(colors.green('less -> css'));
-  return gulp.src('lib/less/**/*.less')
-    .pipe(less({
-      paths:[
-        'node_modules/websdk-colours/dist'
-      ]
-    }))
+  return gulp.src('lib/less/styles.less')
+    .pipe(less())
     .pipe(rename(pkg.name+'.css'))
     .pipe(gulp.dest('dist'))
 
 }
 
 gulp.task('build', function() {
-  return build();
+  return build('lib/index.js', false, 'dist/'+pkg.name+'.js');
 });
+
+gulp.task('buildTest', function() {
+
+  return build( glob.sync('test/spec/*.test.js'), false, 'test/tests.build.js');
+
+})
+
+
 
 gulp.task('watch', function() {
   gutil.log(colors.green("Using livereload config:"));
   gutil.log("Host:", colors.grey(host));
   gutil.log("SSL:", colors.grey(ssl));
-  build(true);
+  return build('lib/index.js', true, 'dist/'+pkg.name+'.js');
   gulp.watch('lib/less/**/*.less', bundleLess );
   livereload.listen(livereloadOpts);
 });
@@ -164,13 +174,16 @@ gulp.task('uglify', function(){
 
 gulp.task('test', function() {
 
-    return gulp.src('./test/**/*.js', {read:false})
+    return gulp.src('./test/tests.build.js', {read:false})
       .pipe(mocha({
-        reporter: 'spec',
-        compilers: {
-          js: require("babelify/node_modules/babel-core/register")
-        }
+        reporter: 'spec'
       }))
+
+})
+
+gulp.task( 'watchTest', function() {
+
+  return gulp.watch('test/spec/*.test.js', sequence('buildTest', 'test'))
 
 })
 
